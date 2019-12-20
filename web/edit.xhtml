@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+
+    <style>
+        .error{
+            color: red;
+        }
+        .mainBorder{
+            border: 4px solid blue;
+            text-align: center;
+            width:1000px;
+        }
+        .borderr{
+
+            border: 2px solid red;
+            margin-left: 100px;
+            width:800px;
+        }
+
+    </style>
+</h:head>
+<h:body style="background-color: black;color: green;">
+
+
+
+
+
+    <h:form styleClass="mainBorder">
+        <Strong style="text-align: center; color: white;">Edit Reservation</Strong><br/><br/>
+        <h:messages styleClass="error" />
+        <h:panelGrid styleClass="borderr">
+            <Strong style="margin-left: 30px;color: white;">General Information:</Strong><br/>
+
+            Arrival Date:
+            <h:inputText id="date"  label="Arrival Date" required="true" value="#{reservationBean.reservation.date}">
+                <f:validateLength minimum="2" maximum="50"/>
+                <f:validateRegex pattern="\d{4}-\d{2}-\d{2}"/>
+            </h:inputText>
+
+            <h:message for="date" styleClass="error"/>
+
+            Nights:
+            <h:inputText id="nightStay" label="Nights" required="true" value="#{reservationBean.reservation.nightStay}" >
+                <f:validateLongRange minimum="0" maximum="120"/>
+            </h:inputText>
+            <h:message for="nightStay" styleClass="error"/>
+
+            Adults:
+            <h:selectOneMenu id="adults" value="#{reservationBean.reservation.adults}" >
+                <f:selectItems value="#{reservationBean.reservation.adultsOptions}"/>
+            </h:selectOneMenu>
+
+
+
+            Children:
+            <h:selectOneMenu id="child" value="#{reservationBean.reservation.children}" >
+                <f:selectItems value="#{reservationBean.reservation.childOptions}"/>
+            </h:selectOneMenu>
+
+
+
+
+        </h:panelGrid>
+        <br/>
+
+        <h:panelGrid styleClass="borderr" style="text-align: left;color: darkmagenta;">
+            <Strong style="text-align: center;color: white;">Preferences:</Strong><br/>
+
+            Room Type
+            <h:selectOneRadio label="Room Type" id="txtroomtype" style="color: green;" value="#{reservationBean.reservation.roomType}" required="true">
+                <f:selectItem itemValue="standard"  itemLabel="Standard" />
+                <f:selectItem itemValue="business" itemLabel="Business" />
+                <f:selectItem itemValue="suite" itemLabel="Suite" />
+            </h:selectOneRadio>
+            <h:message for="txtroomtype" styleClass="error"/>
+
+
+            Bed Type
+            <h:selectOneRadio label="Bed Type" id="txtbedtype" style="color: green;" value="#{reservationBean.reservation.bedType}" required="true">
+                <f:selectItem itemValue="king"  itemLabel="King" />
+                <f:selectItem itemValue="double double" itemLabel="Double Double" />
+            </h:selectOneRadio><br/>
+            <h:message for="txtbedtype" styleClass="error"/>
+            Smoking
+            <h:selectManyCheckbox id="smoking" style="color: green;" value="#{reservationBean.reservation.smokingList}" required="true">
+                <f:selectItem itemValue="Yes"/>
+                <f:selectItem itemValue="No"/>
+            </h:selectManyCheckbox>
+            <h:message for="smoking" styleClass="error"/>
+
+        </h:panelGrid>
+        <br/>
+
+
+        <h:panelGrid styleClass="borderr">
+            <Strong style="margin-left: 30px;color: white;"><b>Contact Information:</b></Strong><br/>
+
+
+            Name:
+            <h:inputText id="name" label="Name" required="true" value="#{reservationBean.reservation.name}" >
+                <f:validateLength minimum="2" maximum="50"/>
+            </h:inputText>
+            <h:message for="name" styleClass="error"/>
+
+            Email:
+            <h:inputText id="email" label="Email" required="true" value="#{reservationBean.reservation.email}" >
+                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+            </h:inputText>
+            <h:message for="email" styleClass="error"/>
+
+
+            Phone:
+            <h:inputText id="phone" label="Ph0ne" required="true" value="#{reservationBean.reservation.phone}"  >
+                <f:validateRegex pattern="\d{4}-\d{7}"/>
+            </h:inputText>
+            <h:message for="phone" styleClass="error"/>
+
+        </h:panelGrid>
+        <h:commandButton value="Edit" style="background-color: red;color: black;margin-top: 10px;" action="#{reservationBean.updateReservation}"></h:commandButton>
+        <h:commandButton value="Back" style="background-color: red;color: black;margin-top: 10px;" action="ListAllReservation"></h:commandButton>
+
+    </h:form>
+
+
+
+</h:body>
+</html>

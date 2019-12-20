@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+<body style="background-color:lightslategrey;">
+
+<div class="container">
+<h1 style="text-align: center">Rervations</h1>
+<hr/>
+<div class="row">
+    <h:form style="text-align: center;margin-left: 800px;">
+
+
+        <h:commandButton style="background-color: red;color: black;" type="submit" value="Add Reservation" action="index"></h:commandButton>
+
+    </h:form>
+    <h:dataTable styleClass="table table-striped table-responsive table-hover" style="border: red;background: black;color: greenyellow " value="#{reservationBean.allReservations}" var="reservation">
+
+        <h:column>
+            <f:facet name="header">Id</f:facet>
+            <h:outputText value="#{reservation.id}"></h:outputText>
+        </h:column>
+        <h:column>
+        <f:facet name="header">Date</f:facet>
+        <h:outputText value="#{reservation.date}"></h:outputText>
+    </h:column>
+
+        <h:column>
+            <f:facet name="header">Nights</f:facet>
+            <h:outputText value="#{reservation.nightStay}"></h:outputText>
+        </h:column>
+
+
+        <h:column>
+            <f:facet name="header">Adults</f:facet>
+            <h:outputText value="#{reservation.adults}"></h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Children</f:facet>
+            <h:outputText value="#{reservation.children}"></h:outputText>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Roon Type</f:facet>
+            <h:outputText value="#{reservation.roomType}"></h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Bed Type</f:facet>
+            <h:outputText value="#{reservation.bedType}"></h:outputText>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Smoking</f:facet>
+            <h:outputText value="#{reservation.smoking}"></h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            <h:outputText value="#{reservation.name}"></h:outputText>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Email</f:facet>
+            <h:outputText value="#{reservation.email}"></h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Phone</f:facet>
+            <h:outputText value="#{reservation.phone}"></h:outputText>
+        </h:column>
+
+
+        <h:column>
+            <h:form>
+
+                <h:commandButton styleClass="btn btn-info"  value="Edit" action="#{reservationBean.editReservation(reservation.id)}"> </h:commandButton>
+                <h:commandButton styleClass="btn btn-danger" value="Delete" action="#{reservationBean.deleteReservation(reservation.id)}">
+                </h:commandButton>
+            </h:form>
+        </h:column>
+
+
+
+
+</h:dataTable>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
