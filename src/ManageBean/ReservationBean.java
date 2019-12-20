@@ -39,7 +39,7 @@ public static int idEdit;
 
     public String addReservationRecord(){
         try {
-
+System.out.println("Lucky");
             //  connection.insertData(this.getDate(),reservation.getNightStay(),reservation.getAdults(),reservation.getChildren(),reservation.getRoomType(),reservation.getBedType(),reservation.getSmoking(),reservation.getName(),reservation.getEmail(),reservation.getPhone());
             db.insertData(this.reservation.getDate(),this.reservation.getNightStay(),this.reservation.getAdults(),this.reservation.getChildren(),this.reservation.getRoomType(),this.reservation.getBedType(),this.reservation.getSmoking(),this.reservation.getName(),this.reservation.getEmail(),this.reservation.getPhone());
 
